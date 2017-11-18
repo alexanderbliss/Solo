@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute',]);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider) {
@@ -24,9 +24,42 @@ myApp.config(function($routeProvider, $locationProvider) {
     })
     .when('/info', {
       templateUrl: '/views/templates/info.html',
-      controller: 'InfoController',
+      controller: 'InfoController as ic',
       resolve: {
         getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/addRev', {
+      templateUrl: '/views/templates/addRev.html',
+      controller: 'RevController as rc',
+      resolve: {
+        getuser: function (UserService) {
+          return UserService.getuser();
+        }
+      }
+    }).when('/search', {
+      templateUrl: '/views/templates/search.html',
+      controller: 'SearchController as sc',
+      resolve: {
+        getuser: function (UserService) {
+          return UserService.getuser();
+        }
+      }
+    }).when('/review', {
+      templateUrl: '/views/templates/review.html',
+      controller: 'RevController as rc',
+      resolve: {
+        getuser: function (UserService) {
+          return UserService.getuser();
+        }
+      }
+    }).when('/game',{
+      templateUrl: '/views/templates/game.html',
+      controller: 'GameController as gc',
+      resolve:{
+        getuser:function(UserService){
           return UserService.getuser();
         }
       }
