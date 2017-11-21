@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-
+var env = require('dotenv').config()
 var passport = require('./strategies/sql.localstrategy');
 var sessionConfig = require('./modules/session.config');
 
@@ -11,7 +11,7 @@ var userRouter = require('./routes/user.router');
 var registerRouter = require('./routes/register.router');
 
 var port = process.env.PORT || 5000;
-
+var api =
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
