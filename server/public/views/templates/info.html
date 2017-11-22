@@ -1,6 +1,26 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
   <p>
-    In Info
+    Profile Page
   </p>
+  <div ng-repeat="user in ic.infoResult.data">
+    <p>Username: {{user.username}}</p>
+    <p>email: {{user.email}}</p>
+    <p>Bio: {{user.bio}}</p>
+    <p>Name: {{user.real_name}}</p>
+  </div>
+  <a href="#/addRev">Add a review</a>
+  <button ng-click='ic.editInfo()'> edit profile information.</button>
+
+  <br></br>
+
+  <div id="inputContainer">
+    <input ng-model="ic.changeInfo.username" type="text" placeholder="username">
+    <input ng-model="ic.changeInfo.email" type="text" placeholder="email">
+    <input ng-model="ic.changeInfo.bio" type="text" placeholder="bio">
+    <input ng-model="ic.changeInfo.realName" type="text" placeholder="Real Name">
+        <button ng-click="ic.editInfo(ic.user)">submit</button>
+
+  </div>
 </div>
+

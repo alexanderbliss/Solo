@@ -1,3 +1,20 @@
 <div ng-include="'views/partials/nav.html'"></div>
+<div>
 
+    <input ng-model="rc.game.name" type="text" placeholder="search for game">
+    <button ng-click="rc.searchGames(rc.game)">Search Games</button>
+
+
+    <input ng-model="rc.review.score" type="number" placeholder="score for the game">
+    <input ng-model="rc.review.title" type="text" placeholder="Title">
+    <input ng-model="rc.review.text" type="text" placeholder="Writen review">
+    <input ng-model="rc.review.link" type="text" placeholder="link">
+    <button ng-click="rc.addRev(rc.review)">Add Your review</button>
+</div>
 inside addRev
+<br></br>
+        {{rc.searchResult}}
+
+    <div ng-repeat="result in rc.searchResult.data">
+        <button>{{result[i]}}</button>
+    </div>

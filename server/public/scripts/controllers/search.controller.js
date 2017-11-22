@@ -3,4 +3,6 @@ myApp.controller('SearchController', function (UserService, SearchService) {
     var vm = this;
     vm.userService = UserService;
     vm.userObject = UserService.userObject;
+
+
 });
