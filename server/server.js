@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index.router');
 var userRouter = require('./routes/user.router');
 var registerRouter = require('./routes/register.router');
 var gameRouter = require('./routes/game.router');
+var reviewRouter = require('./routes/review.router');
 
 var port = process.env.PORT || 5000;
 var api = process.env.API_key;
@@ -32,6 +33,7 @@ app.use(passport.session());
 app.use('/register', registerRouter);
 app.use('/user', userRouter);
 app.use('/game', gameRouter);
+app.use('/review', reviewRouter);
 
 // Catch all bucket, must be last!
 app.use('/', indexRouter);

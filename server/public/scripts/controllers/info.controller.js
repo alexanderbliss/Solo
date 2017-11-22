@@ -3,7 +3,6 @@ myApp.controller('InfoController', function ($http,UserService) {
   var vm = this;
   vm.changeInfo = {};
 
-  vm.userService = UserService;
   vm.userObject = UserService.userObject;
 
   vm.editInfo = function () {

@@ -8,24 +8,22 @@ var agent = 'alexprimeproj'
 var gb = new GiantBomb( api , agent );
 
 
-
-
 router.get('/', function (req, res) {
+    var games = []
     console.log('request for index');
     console.log(req.query.name);
     var search = req.query.name
-    gb.search({ query: search, fields: ['name'], limit: 10, resources: ['game'] },
+    gb.search({ query: search, fields: ['name'], limit: 5, resources: ['game'] },
         function (error, response, body) {
-            
             if (!error && response.statusCode == 200) {
                 body.results.forEach(game => {
-                }).then(res.send(game.name))
+                    console.log(game.name);
+                    games.push(game)
+                })
+                res.send(games)
             }
-            res.send(game.name);
-        }
-    );
-    
-});
+        })
+})
 
 
 module.exports = router;
