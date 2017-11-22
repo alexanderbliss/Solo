@@ -1,4 +1,4 @@
-myApp.controller('InfoController', function(UserService) {
+myApp.controller('InfoController', function ($http,UserService) {
   console.log('InfoController created');
   var vm = this;
   vm.changeInfo = {};
@@ -12,7 +12,6 @@ myApp.controller('InfoController', function(UserService) {
     console.log(vm.changeInfo);
     
   }
-
 
   vm.infoResult = UserService.infoResult;
 

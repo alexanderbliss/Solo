@@ -1,11 +1,11 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div>
 
-    <input ng-model="rc.game" type="text" placeholder="score for the game">
-    <button ng-click="rc.searchGames">Search Games</button>
-    <div ng-repeat="game in ">
-    </div>
-    <input ng-model="rc.score" type="number" placeholder="score for the game">
+    <input ng-model="rc.game.name" type="text" placeholder="search for game">
+    <button ng-click="rc.searchGames(rc.game)">Search Games</button>
+    <!-- <div ng-repeat="game in "> -->
+    <!-- </div> -->
+    <input ng-model="rc.reveiw.score" type="number" placeholder="score for the game">
     <input ng-model="rc.title" type="text" placeholder="Title">
     <input ng-model="rc.text" type="text" placeholder="Writen review">
     <input ng-model="rc.link" type="text" placeholder="link">

@@ -22,22 +22,6 @@ myApp.service('UserService', function ($http, $location) {
       $location.path("/home");
     });
   }
-    self.getuser = function () {
-      console.log('UserService -- getuser');
-      $http.get('/user').then(function (response) {
-        if (response.data.username) {
-          // user has a curret session on the server
-          self.userObject.userName = response.data.username;
-        } else {
-          console.log('UserService -- getuser -- failure');
-          // user has no session, bounce them back to the login page
-          $location.path("/home");
-        }
-      }, function (response) {
-        console.log('UserService -- getuser -- failure: ', response);
-        $location.path("/home");
-      });
-    },
 
     self.userInfo = function () {
         console.log('click');
