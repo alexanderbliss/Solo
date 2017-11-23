@@ -13,8 +13,7 @@
 </div>
 inside addRev
 <br></br>
-        {{rc.searchResult}}
 
     <div ng-repeat="result in rc.searchResult.data">
-        <button>{{result[i]}}</button>
+        <button ng-click="rc.review.game = result.name">{{result.name}}</button>
     </div>

@@ -8,5 +8,13 @@ myApp.service('RevService', function ($http, $location) {
         })
     }
 
-
+    self.getReviews = function(){
+        console.log('got revs');
+        $http.get('/review/reviews' + id).then(function(response){
+            console.log(response);
+            
+        }).cathc(function(error){
+        })
+        
+    }
 });

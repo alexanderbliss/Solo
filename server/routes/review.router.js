@@ -13,14 +13,14 @@ var pool = require('../modules/pool.js');
 router.post('/', function (req, res) {
     var rev = req.body;
     console.log(rev);
-    
+
     pool.connect(function (errorConnectingToDb, db, done) {
         if (errorConnectingToDb) {
             console.log('Error connecting', errorConnectingToDb);
             res.sendStatus(500);
         } else {
-            var queryText = 'INSERT INTO "reviews" ("user_id","game", "title" , "score", "text", "link") VALUES ($1, $2, $3 , $4, $5, $6 );';
-            db.query(queryText, [rev.id,rev.game, rev.score, rev.title, rev.text, rev.link], function (errorMakingQuery, result) {
+            var queryText = 'INSERT INTO "reviews" ("user_id","game", "score","title", "text", "link") VALUES ($1, $2, $3 , $4, $5, $6 );';
+            db.query(queryText, [rev.id, rev.game, rev.score, rev.title, rev.text, rev.link], function (errorMakingQuery, result) {
                 done();
                 if (errorMakingQuery) {
                     console.log('Error making query', errorMakingQuery);

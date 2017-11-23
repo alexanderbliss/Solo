@@ -8,6 +8,7 @@
     <p>email: {{user.email}}</p>
     <p>Bio: {{user.bio}}</p>
     <p>Name: {{user.real_name}}</p>
+    <p>id: {{user.id}}</p>
   </div>
   <a href="#/addRev">Add a review</a>
   <button ng-click='ic.editInfo()'> edit profile information.</button>
@@ -23,4 +24,6 @@
 
   </div>
 </div>
-
+<div ng-repeat="reviews in ic.reviewResults.data">
+<button>{{reviews.game}}</button>
+</div>
