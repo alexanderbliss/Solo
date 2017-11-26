@@ -5,6 +5,8 @@ html {
   font-family: sans-serif;
   font-size: 14px;
   background-color: grey;
+  font-family: 'Source Serif Pro',
+  serif;
 }
 
 .instructions .container h1 {
@@ -81,4 +83,8 @@ li a {
 li a:hover {
   text-decoration: underline;
   color: #eee;
+}
+
+h1{
+  font-size: 40Px;
 }

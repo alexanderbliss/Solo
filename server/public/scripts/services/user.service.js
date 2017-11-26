@@ -22,7 +22,7 @@ myApp.service('UserService', function ($http, $location) {
       $location.path("/home");
     });
   }
-  
+
     self.userInfo = function () {
         console.log('click');
       var userName = self.userObject.userName;
