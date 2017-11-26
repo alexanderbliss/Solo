@@ -3,7 +3,14 @@ myApp.controller('LoginController', function($http, $location, UserService) {
     var vm = this;
     vm.user = {
       username: '',
-      password: ''
+      password: '',
+      real_name: '',
+      email: '',
+      Bio: '',
+      text1: '',
+      text2: '',
+      vid1:'',
+      vid2:''
     };
     vm.message = '';
 
@@ -12,7 +19,6 @@ myApp.controller('LoginController', function($http, $location, UserService) {
       if(vm.user.username === '' || vm.user.password === '') {
         vm.message = "Enter your username and password!";
       } else {
-        console.log('LoginController -- login -- sending to server...', vm.user);
         $http.post('/', vm.user).then(function(response) {
           if(response.data.username) {
             console.log('LoginController -- login -- success: ', response.data);

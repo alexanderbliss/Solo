@@ -1,2 +1,18 @@
 <div ng-include="'views/partials/nav.html'"></div>
+
+<div ng-repeat="review in rc.revToSee.data">
+    <ul>
+        <br></br>
+        <h1>{{review.title}}</h1>
+        <br></br>
+        <h2>{{review.game}}</h2>
+        <br></br>
+        <h3>{{review.text}}</h3>
+        <br></br>
+        <ng-youtube-embed video="review.link" autoplay="false" color="white" disablekb="true" end="20">
+        </ng-youtube-embed>
+        <br></br>
+    </ul>
+</div>
+<br></br>
 inside review page

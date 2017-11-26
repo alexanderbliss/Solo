@@ -1,2 +1,14 @@
 <div ng-include="'views/partials/nav.html'"></div>
-inside search page. 
+
+
+
+
+<div>
+    <input type="text" ng-model="sc.reviewer.name" placeholder='Reviewer'>
+    <button ng-click="sc.searchReviewers(sc.reviewer)">Search</button>
+</div>
+<div ng-repeat="result in sc.searchResults.data">
+<button>{{result.username}}</button>
+</div>
+inside search page.
+
