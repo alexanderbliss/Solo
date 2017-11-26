@@ -1,22 +1,45 @@
-myApp.controller('RevController', function (UserService, SearchService,RevService) {
+myApp.controller('RevController', function (UserService, SearchService, RevService) {
     console.log('RevController created');
     var vm = this;
+    var userId;
+    var gameData;
     vm.userService = UserService;
-    vm.game = { name: ''}
-    vm.review = { id: 'this' }
+    vm.userObject = UserService.userObject;
+    vm.revService = RevService
+    vm.revToSee = RevService.revToSee
+    vm.thisReview = self.thisReview
+    vm.searchService = SearchService
+    vm.searchObject = SearchService.searchResult
+
+    vm.game = { name: '' }
+    vm.review = {
+        id: vm.userObject.id,
+        game: gameData
+    }
     vm.searchGames = function () {
         game = vm.game
-        SearchService.searchGames(game)
-        
+        SearchService.searchGames(game).then(function (response) {
+            if (response) {
+                vm.searchResult = response
+                console.log('api res', vm.searchResult);
+            } else {
+                console.log('error in search service.');
+            }
+        })
     }
-    vm.addRev = function(){
-        console.log(userId);
+    vm.addGame = function () {
+        console.log('click game', vm.review.game);
+    }
+    vm.addRev = function () {
         rev = vm.review
+        console.log(rev);
         RevService.addRev(rev)
     }
-    vm.searchResult = SearchService.searchResult;
+    vm.infoResult = UserService.infoResult;
+    RevService.seeReview();
 
-    UserService.userInfo();
-
-});
-
+    window.onload = function () {
+        UserService.userInfo();
+        UserService.getuser();
+    };
+})

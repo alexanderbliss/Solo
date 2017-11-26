@@ -3,7 +3,6 @@ myApp.service('UserService', function ($http, $location) {
   var self = this;
   self.userObject = {};
   self.infoResult = { data: [] }
-
   
   self.getuser = function () {
     console.log('UserService -- getuser');
@@ -11,6 +10,7 @@ myApp.service('UserService', function ($http, $location) {
       if (response.data.username) {
         // user has a curret session on the server
         self.userObject.userName = response.data.username;
+        self.userObject.id = response.data.userId
         console.log('UserService -- getuser -- User Data: ', self.userObject);
       } else {
         console.log('UserService -- getuser -- failure');

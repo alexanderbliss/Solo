@@ -3,13 +3,12 @@ var router = express.Router();
 var pool = require('../modules/pool.js');
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
-  console.log('get /user route');
   // check if logged in
   if(req.isAuthenticated()) {
     // send back user object from database
-    console.log('logged in', req.user);
     var userInfo = {
-      username : req.user.username
+      username : req.user.username,
+      userId : req.user.id
 
     };
     res.send(userInfo);
@@ -72,5 +71,30 @@ router.get('/logout', function(req, res) {
   res.sendStatus(200);
 });
 
+router.get('/reviewers/:id', function (req, res) {
+  console.log('here');
+  
+  var username = req.params.id
+  // var username = req.body.
+  console.log(username);
+  pool.connect(function (errorConnectingToDb, db, done) {
+    if (errorConnectingToDb) {
+      console.log('Error connecting', errorConnectingToDb);
+      res.sendStatus(500);
+    } else {
+      var queryText = 'SELECT*FROM "users" WHERE "username" ILIKE $1 ;';
+      db.query(queryText, [username], function (errorMakingQuery, result) {
+        done();
+        if (errorMakingQuery) {
+          console.log('Error making query', errorMakingQuery);
+          res.sendStatus(500);
+        } else {
+          console.log(result.rows);
+          res.send(result.rows);
+        }
+      }); // END QUERY
+    }
+  });
+});//END GET ROUTE
 
 module.exports = router;

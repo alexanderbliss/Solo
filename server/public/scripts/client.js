@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute',]);
+var myApp = angular.module('myApp', ['ngRoute', 'ngYoutubeEmbed']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider) {
@@ -15,6 +15,7 @@ myApp.config(function($routeProvider, $locationProvider) {
     })
     .when('/user', {
       templateUrl: '/views/templates/user.html',
+      controller: 'UserController as uc',
       controller: 'UserController as uc',
       resolve: {
         getuser : function(UserService){

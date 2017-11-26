@@ -7,13 +7,13 @@ var self = this
         console.log('click');
         console.log(game);
         
-        $http.get('/game' , {params: game}).then(function (response) {
-            if (response) {
-                self.searchResult = response
-                console.log('api res', self.searchResult);
-            } else {
-                console.log('error in search service.');
-            }
-        })
+        return $http.get('/game' , {params: game})
+    }
+
+    self.searchReviewers = function (reviewer) {
+        console.log('click');
+        console.log(reviewer);
+
+        return $http.get('/user/reviewers/' + reviewer)
     }
 });
