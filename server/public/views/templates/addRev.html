@@ -1,22 +1,23 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<div>
-
-    <input ng-model="rc.game.name" type="text" placeholder="search for game">
-    <md-button ng-click="rc.searchGames(rc.game)">Search Games</md-button>
-
-
-    <input ng-model="rc.review.score" type="number" placeholder="score for the game">
-    <input ng-model="rc.review.title" type="text" placeholder="Title">
-    <input ng-model="rc.review.text" type="text" placeholder="Writen review">
-    <input ng-model="rc.review.link" type="text" placeholder="link">
-    <md-button ng-click="rc.addRev(rc.review)">Add Your review</md-button>
-</div>
-inside addRev
 <br></br>
+<div layout="column" layout-align="center center">
 
+    <input id="gameInput" ng-model="rc.game.name" type="text" placeholder="search for game">
+    <md-button class="md-raised md-primary" ng-click="rc.searchGames(rc.game)">Search Games</md-button>
+    <br>
     <div ng-repeat="result in rc.searchResult.data">
         <md-button ng-click="rc.review.game = result.name">{{result.name}}</md-button>
     </div>
-
-        <md-button>hello</md-button>
-
+    <br>
+    <input id="scoreInput" ng-model="rc.review.score" type="number" placeholder="score for the game" >
+    <br>
+    <input id="titleInput" ng-model="rc.review.title" type="text" placeholder="Title" >
+    <br>
+    <textarea id="textInput" ng-model="rc.review.text" type="text" placeholder="Writen review" ></textarea>
+    <br>
+    <input id="linkInput" ng-model="rc.review.link" type="text" placeholder="link" >
+    <br>
+    <md-button class="md-raised md-primary" ng-click="rc.addRev(rc.review)">Add Your review</md-button>
+</div>
+inside addRev
+<br></br>

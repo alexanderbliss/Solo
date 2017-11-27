@@ -1,26 +1,40 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="container">
+<div ng-cloak class="container">
   <p>
     Profile Page
   </p>
-  <div ng-repeat="user in ic.infoResult.data">
-    <p>Username: {{user.username}}</p>
-    <p>email: {{user.email}}</p>
-    <p>Bio: {{user.bio}}</p>
-    <p>Name: {{user.real_name}}</p>
-    <p>id: {{user.id}}</p>
+  <div ng-cloak layout="row"  layout-align="space-around center" layout-wrap>
+    <p>Username: {{ic.userObject.userName}}</p>
+    <p>email: {{ic.userObject.email}}</p>
+    <p>Bio: {{ic.userObject.bio}}</p>
+    <p>Name: {{ic.userObject.real_name}}</p>
+    <p>id: {{ic.userObject.id}}</p>
+    <md-button class="md-raised md-primary"><a href="#/addRev">Add a review</a></md-button>
+
+
   </div>
-  <a href="#/addRev">Add a review</a>
-  <button ng-click='ic.editInfo()'> edit profile information.</button>
+  <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow">
+  <br />
+  <div class="check-element animate-show-hide" ng-show="checked">
+    I show up when your checkbox is checked.
+  
+  
   <br></br>
   <div id="inputContainer">
     <input ng-model="ic.changeInfo.username" type="text" placeholder="username">
     <input ng-model="ic.changeInfo.email" type="text" placeholder="email">
     <input ng-model="ic.changeInfo.bio" type="text" placeholder="bio">
     <input ng-model="ic.changeInfo.realName" type="text" placeholder="Real Name">
-        <button ng-click="ic.editInfo(ic.user)">submit</button>
-        <div ng-repeat="reviews in ic.reviews.data">
-          <md-button ng-click="ic.revId = reviews.id ; ic.viewReview() ; ic.seeReview()" ><a href="#/review">{{reviews.game}} , {{reviews.id}}</a></md-button>
-        </div>
+    <button ng-click="ic.editInfo(ic.user)">submit</button>
   </div>
+  </div>
+  <h6 layout=row layout-align="center center">Recent Reveiws</h6>
+  <div id="revList">
+  <div  ng-cloak layout=column layout-align="space-around center"  ng-repeat="reviews in ic.reviews.data">
+    <md-button ng-click="ic.revId = reviews.id ; ic.viewReview() ; ic.seeReview()">
+      <a href="#/review">{{reviews.game}} | {{reviews.title}}</a>
+    </md-button>
+    </div>
+  </div>
+
 </div>

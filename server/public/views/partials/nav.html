@@ -1,7 +1,6 @@
 <div class="navbar">
   <div class="container">
     <h1 id="welcome" class="lead">Review Monster</h1>
-    <button class="logout" ng-click="userService.logout()">Log Out</button>
     <ul>
       <li><a href="#/user">User Home</a></li>
       <li><a href="#/info">Profile</a></li>
@@ -9,6 +8,8 @@
       <li><a href="#/review">view a review</a></li>
       <li><a href="#/search">search</a></li>
       <li><a href="#/game">view game</a></li>
+      <md-button class="md-raised md-warn" ng-click="uc.userService.logout()">Log Out</md-button>
+
     </ul>
   </div>
 </div>

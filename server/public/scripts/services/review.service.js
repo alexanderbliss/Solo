@@ -4,7 +4,7 @@ myApp.service('RevService', function ($http, $location) {
     self.reviewResult = {}
     self.thisReview = {}
     self.getComment = {}
-    
+    self.revToSee= {}
     self.addRev = function (rev) {
         console.log('added rev');
         $http.post('/review', rev).then(function (response) {
@@ -14,14 +14,15 @@ myApp.service('RevService', function ($http, $location) {
     }
 
     self.seeReview = function () {
-        self.revToSee = self.thisReview
+        self.revToSee.data = self.thisReview
+        console.log(self.revToSee);
     }
 
-    self.getReviews = function (id) {
+    self.getReviews = function () {
         console.log('got revs');
         $http.get('/review/reviews/' + id).then(function (response) {
             console.log(response);
-            self.reviewResult = response;
+            self.reviewResult.data = response.data;
         }).catch(function (error) {
         })
     }
@@ -45,7 +46,7 @@ myApp.service('RevService', function ($http, $location) {
         revToSend = self.review
         $http.get('/review/thisReview/' + id, { params: { rev, id } }).then(function (response) {
             console.log(response);
-            self.thisReview = response;
+            self.thisReview.data = response;
             console.log(self.thisReview);
         }).catch(function (error) {
         })
