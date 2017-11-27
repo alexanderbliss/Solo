@@ -10,12 +10,14 @@ myApp.controller('RevController', function (UserService, SearchService, RevServi
     vm.thisReview = self.thisReview
     vm.searchService = SearchService
     vm.searchObject = SearchService.searchResult
-
+    vm.getcomment = RevService.getComment
     vm.game = { name: '' }
     vm.review = {
         id: vm.userObject.id,
         game: gameData
     }
+    vm.comment = {}
+
     vm.searchGames = function () {
         game = vm.game
         SearchService.searchGames(game).then(function (response) {
@@ -38,8 +40,21 @@ myApp.controller('RevController', function (UserService, SearchService, RevServi
     vm.infoResult = UserService.infoResult;
     RevService.seeReview();
 
+    vm.postComment = function(){
+        var com = vm.comment
+        RevService.postComment(com);
+    }
+        RevService.getComments();
+    
     window.onload = function () {
         UserService.userInfo();
         UserService.getuser();
     };
-})
+}).controller('AppCtrl', function ($scope) {
+    $scope.title1 = 'Button';
+    $scope.title4 = 'Warn';
+    $scope.isDisabled = true;
+
+    $scope.googleUrl = 'http://google.com';
+
+    })

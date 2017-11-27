@@ -5,13 +5,16 @@ var pool = require('../modules/pool.js');
 router.get('/', function(req, res) {
   // check if logged in
   if(req.isAuthenticated()) {
-    // send back user object from database
+    // send back user object from database    
     var userInfo = {
       username : req.user.username,
-      userId : req.user.id
-
+      userId : req.user.id,
+      real_name : req.user.real_name,
+      email : req.user.email,
+      bio : req.user.bio,
     };
     res.send(userInfo);
+    
   } else {
     // failure best handled on the server. do redirect here.
     console.log('not logged in');
