@@ -1,18 +1,28 @@
 <div ng-include="'views/partials/nav.html'"></div>
+<br>
 
-<div ng-repeat="review in rc.revToSee.data">
-    <ul>
+<div id="revContainer" layout="column" layout-align="center center" ng-repeat="review in rc.revToSee.data.data.data">
+
+        <br>
         <br></br>
         <h1>{{review.title}}</h1>
         <br></br>
         <h2>{{review.game}}</h2>
         <br></br>
-        <h3>{{review.text}}</h3>
+        <p>{{review.text}}</p>
         <br></br>
         <ng-youtube-embed video="review.link" autoplay="false" color="white" disablekb="true" end="20">
         </ng-youtube-embed>
         <br></br>
-    </ul>
 </div>
 <br></br>
-inside review page
+<div layout=row layout-align="center center">
+    <md-button ng-click=EditReview class="md-raised md-warn">Edit This review</md-button>
+    <md-button ng-click=EditReview class="md-accent md-raised md-hue-3">Delete This Review</md-button>
+</div>
+<br></br>
+<div layout=column layout-align="center center">
+    <input type="text" ng-model="rc.comment.comment">
+
+    <md-button ng-click="review.id = rc.comment.revId ; rc.postComment(rc.comment)">Post Comment</md-button>
+</div>

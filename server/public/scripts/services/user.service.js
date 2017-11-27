@@ -6,11 +6,14 @@ myApp.service('UserService', function ($http, $location) {
   
   self.getuser = function () {
     console.log('UserService -- getuser');
-    $http.get('/user').then(function (response) {
+    return $http.get('/user').then(function (response) {
       if (response.data.username) {
         // user has a curret session on the server
         self.userObject.userName = response.data.username;
         self.userObject.id = response.data.userId
+        self.userObject.real_name = response.data.real_name
+        self.userObject.bio = response.data.bio
+        self.userObject.email = response.data.email
         console.log('UserService -- getuser -- User Data: ', self.userObject);
       } else {
         console.log('UserService -- getuser -- failure');
@@ -23,22 +26,7 @@ myApp.service('UserService', function ($http, $location) {
     });
   }
 
-    self.userInfo = function () {
-        console.log('click');
-      var userName = self.userObject.userName;
-    $http.get('/user/' + userName)
-    .then(function (response) {
-          if (response) {
-            console.log(response);
-            self.user = response
-            self.infoResult.data = response.data
-            console.log(self.infoResult.data);
-            
-          } else {
-            console.log('UserService error');
-          }
-        })
-      }
+
   self.editInfo = function (user) {
     console.log('click');
     var userName = self.userObject.userName;

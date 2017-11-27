@@ -6,7 +6,6 @@ myApp.controller('InfoController', function ($http,UserService, RevService) {
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
   vm.reviews = RevService.reviewResult
-  
   vm.editInfo = function () {
     user = vm.changeInfo
     UserService.editInfo(user);
@@ -23,13 +22,15 @@ myApp.controller('InfoController', function ($http,UserService, RevService) {
   }
 
   window.onload = function () {
+    UserService.getuser();
+    
   };
-  UserService.userInfo();
-  UserService.getuser();
   id = vm.userObject.id
+
+  
   RevService.getReviews(id)
 
-  console.log(id);
+
 
 
 });
