@@ -3,7 +3,8 @@ myApp.service('RevService', function ($http, $location) {
     self.review = {}
     self.reviewResult = {}
     self.thisReview = {}
-
+    self.getComment = {}
+    
     self.addRev = function (rev) {
         console.log('added rev');
         $http.post('/review', rev).then(function (response) {
@@ -12,18 +13,17 @@ myApp.service('RevService', function ($http, $location) {
         })
     }
 
-    self.seeReview = function(){
+    self.seeReview = function () {
         self.revToSee = self.thisReview
     }
 
-    self.getReviews = function(id){
+    self.getReviews = function (id) {
         console.log('got revs');
-        $http.get('/review/reviews/' + id).then(function(response){
+        $http.get('/review/reviews/' + id).then(function (response) {
             console.log(response);
             self.reviewResult = response;
-        }).catch(function(error){
+        }).catch(function (error) {
         })
-        
     }
 
     self.editInfo = function (user) {
@@ -39,17 +39,33 @@ myApp.service('RevService', function ($http, $location) {
             })
     }
 
-    self.viewReview = function(rev, id){
+    self.viewReview = function (rev, id) {
         self.review.rev = rev
         self.review.id = id
         revToSend = self.review
-        $http.get('/review/thisReview/' + id ,{params: {rev, id}}).then(function(response){
+        $http.get('/review/thisReview/' + id, { params: { rev, id } }).then(function (response) {
             console.log(response);
             self.thisReview = response;
             console.log(self.thisReview);
-            
-        }).catch(function(error){
+        }).catch(function (error) {
         })
-        
+    }
+
+    self.postComment = function (com) {
+        console.log(id);
+        console.log(com);
+        $http.post('/review/comment/' + id ).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+        })
+    }
+
+    self.getComments = function(){
+        console.log('got revs');
+        $http.get('/review/comment/' + id).then(function (response) {
+            console.log(response);
+            self.getComment = response;
+        }).catch(function (error) {
+        })
     }
 });

@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngYoutubeEmbed']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngYoutubeEmbed', 'ngMaterial']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider) {
@@ -61,6 +61,14 @@ myApp.config(function($routeProvider, $locationProvider) {
       controller: 'GameController as gc',
       resolve:{
         getuser:function(UserService){
+          return UserService.getuser();
+        }
+      }
+    }).when('/viewProfile', {
+      templateUrl: '/views/templates/veiwProfile.html',
+      controller: 'infoController as ic',
+      resolve: {
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }

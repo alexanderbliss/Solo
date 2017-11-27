@@ -1,7 +1,6 @@
 <div ng-include="'views/partials/nav.html'"></div>
 
-<div ng-repeat="review in rc.revToSee.data">
-    <ul>
+<div  ng-repeat="review in rc.revToSee.data">
         <br></br>
         <h1>{{review.title}}</h1>
         <br></br>
@@ -12,7 +11,12 @@
         <ng-youtube-embed video="review.link" autoplay="false" color="white" disablekb="true" end="20">
         </ng-youtube-embed>
         <br></br>
-    </ul>
+</div>
+
+<div>
+    <input type="text" ng-model="rc.comment.comment">
+
+    <md-button ng-click="review.id = rc.comment.revId ; rc.postComment(rc.comment)">Post Comment</md-button>
 </div>
 <br></br>
 inside review page

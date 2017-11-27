@@ -20,7 +20,7 @@
     <input ng-model="ic.changeInfo.realName" type="text" placeholder="Real Name">
         <button ng-click="ic.editInfo(ic.user)">submit</button>
         <div ng-repeat="reviews in ic.reviews.data">
-          <button ng-click="ic.revId = reviews.id ; ic.viewReview() ; ic.seeReview()" ><a href="#/review">{{reviews.game}} , {{reviews.id}}</a></button>
+          <md-button ng-click="ic.revId = reviews.id ; ic.viewReview() ; ic.seeReview()" ><a href="#/review">{{reviews.game}} , {{reviews.id}}</a></md-button>
         </div>
   </div>
 </div>
