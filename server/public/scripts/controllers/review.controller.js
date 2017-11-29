@@ -1,4 +1,4 @@
-myApp.controller('RevController', function (UserService, SearchService, RevService) {
+myApp.controller('RevController', function ($sce, UserService, SearchService, RevService) {
     console.log('RevController created');
     var vm = this;
     var userId;
@@ -10,7 +10,7 @@ myApp.controller('RevController', function (UserService, SearchService, RevServi
     vm.thisReview = self.thisReview
     vm.searchService = SearchService
     vm.searchObject = SearchService.searchResult
-    vm.getcomment = RevService.getComment
+    vm.getComment = RevService.getComment
     vm.game = { name: '' }
     vm.review = {
         id: vm.userObject.id,
@@ -29,6 +29,11 @@ myApp.controller('RevController', function (UserService, SearchService, RevServi
             }
         })
     }
+
+    vm.trustHtml = function(htmlString){
+        return $sce.trustAsHtml(htmlString);
+    }
+
     vm.addGame = function () {
         console.log('click game', vm.review.game);
     }
@@ -39,12 +44,16 @@ myApp.controller('RevController', function (UserService, SearchService, RevServi
     }
     vm.infoResult = UserService.infoResult;
     RevService.seeReview();
+    RevService.getComments()
 
     vm.postComment = function(){
         var com = vm.comment
-        RevService.postComment(com);
+        revId = vm.comment.id
+        RevService.postComment(com,revId)
+        
+
     }
-        RevService.getComments();
+        
     
     window.onload = function () {
         UserService.userInfo();

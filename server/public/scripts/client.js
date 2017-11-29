@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngYoutubeEmbed', 'ngMaterial']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngYoutubeEmbed', 'ngMaterial', 'textAngular']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider) {

@@ -50,4 +50,10 @@ myApp.controller('LoginController', function($http, $location, UserService) {
         });
       }
     }
-});
+}).controller('DemoCtrl', function ($scope) {
+}).config(function ($mdThemingProvider) {
+    $mdThemingProvider.theme('docs-dark', 'default')
+      .primaryPalette('yellow')
+      .dark();
+
+  });
