@@ -148,18 +148,21 @@ router.get('/:id', function (req, res) {
 });//END GET ROUTE
 
 router.post('/comment/:id', function (req, res) {
+    console.log(req.params);
+    console.log('req body',req.body);
+
     console.log(req.params.id);
-    console.log(req.query.comment);
+    console.log(req.body.comment);
     
-    var id = req.params.id
-    var comment = req.query
+    var id = req.body.revId
+    var comment = req.body.comment
     pool.connect(function (errorConnectingToDb, db, done) {
         if (errorConnectingToDb) {
             console.log('Error connecting', errorConnectingToDb);
             res.sendStatus(500);
         } else {
-            var queryText = 'INSERT INTO "comments" ("comment","review_id",) VALUES ($1, $2);';
-            db.query(queryText, [], function (errorMakingQuery, result) {
+            var queryText = 'INSERT INTO "comments" ("comment" , "review_id") VALUES ($1 , $2);';
+            db.query(queryText, [comment,id], function (errorMakingQuery, result) {
                 done();
                 if (errorMakingQuery) {
                     console.log('Error making query', errorMakingQuery);
@@ -172,4 +175,28 @@ router.post('/comment/:id', function (req, res) {
     });
 });//End POST route
 
+router.get('/comment/:id', function (req, res) {
+    console.log(req.params);
+    
+    var reviewId = req.params.id
+    console.log('req', reviewId);
+
+    pool.connect(function (errorConnectingToDb, db, done) {
+        if (errorConnectingToDb) {
+            console.log('Error connecting', errorConnectingToDb);
+            res.sendStatus(500);
+        } else {
+            var queryText = 'SELECT*FROM "comments" Where  "review_id" = $1;'
+            db.query(queryText, [reviewId], function (errorMakingQuery, result) {
+                done();
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.send(result.rows);
+                }
+            }); // END QUERY
+        }
+    });
+});//END GET ROUTE
 module.exports = router;

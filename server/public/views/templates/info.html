@@ -1,15 +1,13 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div ng-cloak class="container">
-  <p>
-    Profile Page
-  </p>
+  <center><u>Profile</u></center>
   <div ng-cloak layout="row"  layout-align="space-around center" layout-wrap>
-    <p>Username: {{ic.userObject.userName}}</p>
-    <p>email: {{ic.userObject.email}}</p>
-    <p>Bio: {{ic.userObject.bio}}</p>
-    <p>Name: {{ic.userObject.real_name}}</p>
-    <p>id: {{ic.userObject.id}}</p>
+    <p><strong>Username: </strong>{{ic.userObject.userName}}</p>
+    <p><strong>email: </strong> {{ic.userObject.email}}</p>
+    <p><strong>Name: </strong> {{ic.userObject.real_name}}</p>
+    <p><strong>id :</strong> {{ic.userObject.id}}</p>
     <md-button class="md-raised md-primary"><a href="#/addRev">Add a review</a></md-button>
+    <p><strong>Bio: </strong> {{ic.userObject.bio}}</p>
 
 
   </div>

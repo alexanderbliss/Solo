@@ -1,6 +1,8 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <br></br>
 <div layout="column" layout-align="center center">
+    <md-button class="md-raised md-primary" ng-click="rc.addRev(rc.review)">Add Your review</md-button>
+    <br>
 
     <input id="gameInput" ng-model="rc.game.name" type="text" placeholder="search for game">
     <md-button class="md-raised md-primary" ng-click="rc.searchGames(rc.game)">Search Games</md-button>
@@ -9,18 +11,14 @@
         <md-button ng-click="rc.review.game = result.name">{{result.name}}</md-button>
     </div>
     <br>
-    <input id="scoreInput" ng-model="rc.review.score" type="number" placeholder="score for the game" >
+    <input id="scoreInput" ng-model="rc.review.score" type="number" placeholder="score for the game">
     <br>
-    <input id="titleInput" ng-model="rc.review.title" type="text" placeholder="Title" >
+    <input id="titleInput" ng-model="rc.review.title" type="text" placeholder="Title">
+    <br>
+
+    <input id="linkInput" ng-model="rc.review.link" type="text" placeholder="link">
+
     <br>
     <div id="txtAng" text-angular ng-model="rc.review.text"></div>
-    
-    <br>
-    <input id="linkInput" ng-model="rc.review.link" type="text" placeholder="link" >
-    <br>
-    <md-button class="md-raised md-primary" ng-click="rc.addRev(rc.review)">Add Your review</md-button>
-</div>
-inside addRev
-<br></br>
 
-<i class="fa fa-camera-retro fa-lg"></i> fa-lg
+</div>

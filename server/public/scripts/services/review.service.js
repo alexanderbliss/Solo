@@ -6,6 +6,8 @@ myApp.service('RevService', function ($http, $location) {
     self.getComment = {}
     self.revToSee= {}
     self.commentInfo = {}
+    var revId = ""
+
     self.addRev = function (rev) {
         console.log('added rev');
         $http.post('/review', rev).then(function (response) {
@@ -16,7 +18,6 @@ myApp.service('RevService', function ($http, $location) {
 
     self.seeReview = function () {
         self.revToSee.data = self.thisReview
-        console.log(self.revToSee.data.data.data);
     }
 
     self.getReviews = function () {
@@ -49,27 +50,30 @@ myApp.service('RevService', function ($http, $location) {
             console.log(response);
             self.thisReview.data = response;
             console.log(self.thisReview);
+            revId = self.thisReview.data.data[0].id
+            console.log(revId);
+            
         }).catch(function (error) {
         })
     }
 
-    self.postComment = function (com) {
-        console.log(self.thisReview.data.data.id);
-        console.log(self.thisReview.data.data);
-        
-        console.log(id);
-        console.log(com);
-        $http.post('/review/comment/' + id ).then(function (response) {
+    self.postComment = function (com , revId) {
+        $http.post('/review/comment/' + id , com).then(function (response) {
+            self.getComments();
             console.log(response);
         }).catch(function (error) {
         })
     }
 
     self.getComments = function(){
+        console.log();
+        
         console.log('got revs');
-        $http.get('/review/comment/' + id).then(function (response) {
+        $http.get('/review/comment/' + revId).then(function (response) {
             console.log(response);
-            self.getComment = response;
+            self.getComment.data = response;
+            console.log(self.getComment);
+            
         }).catch(function (error) {
         })
     }
