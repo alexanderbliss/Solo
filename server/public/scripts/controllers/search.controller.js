@@ -11,6 +11,7 @@ myApp.controller('SearchController', function (UserService, SearchService, RevSe
     vm.reUser = SearchService.reUser
     vm.reviews = RevService.reviewResult
     vm.thisUserReviews = RevService.reviewUserResult
+    vm.followInfo = {}
     vm.searchGames = function () {
         game = vm.game
         SearchService.searchGames(game).then(function (response) {
@@ -50,7 +51,10 @@ myApp.controller('SearchController', function (UserService, SearchService, RevSe
 
     vm.follow = function(){
         console.log('click follow');
-        SearchService.follow(user)
+        fInfo = vm.followInfo
+        console.log(fInfo);
+        
+        SearchService.follow(user, fInfo)
     }
 
     vm.unfollow = function(){

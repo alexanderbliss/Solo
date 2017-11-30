@@ -123,4 +123,54 @@ router.get('/this/:id', function (req, res) {
   });
 });//END GET ROUTE
 
+router.delete('/follow/:id', function (req, res) {
+  console.log(req.params);
+
+  var followID = req.params.id
+  console.log('req', followID);
+  pool.connect(function (errorConnectingToDb, db, done) {
+    if (errorConnectingToDb) {
+      console.log('Error connecting', errorConnectingToDb);
+      res.sendStatus(500);
+    } else {
+      var queryText = 'DELETE FROM "following" Where  "id" = $1;'
+      db.query(queryText, [followID], function (errorMakingQuery, result) {
+        done();
+        if (errorMakingQuery) {
+          console.log('Error making query', errorMakingQuery);
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+        }
+      }); // END QUERY
+    }
+  });
+});//END GET ROUTE
+
+router.post('/follow/:id', function (req, res) {
+  console.log(req.params.id);
+  console.log('body', req.body);
+
+  var followId = req.params.id
+  var follow = req.body
+  pool.connect(function (errorConnectingToDb, db, done) {
+    if (errorConnectingToDb) {
+      console.log('Error connecting', errorConnectingToDb);
+      res.sendStatus(500);
+    } else {
+      var queryText = 'INSERT INTO "following" ("user_id" , "reviewer_id", reviewer_name) VALUES ($1 , $2, $3);';
+      db.query(queryText, [followId, follow.username, follow.reviewer_id], function (errorMakingQuery, result) {
+        done();
+        if (errorMakingQuery) {
+          console.log('Error making query', errorMakingQuery);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      }); // END QUERY
+    }
+  });
+});//End POST route
+
+
 module.exports = router;

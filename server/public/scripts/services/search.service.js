@@ -28,20 +28,18 @@ var self = this
     
 
 self.follow = function(user){
-    $http.post('/follow/'+ user).then(function (response) {
+    $http.post('user/follow/' + user, fInfo).then(function (response) {
         console.log(response);
     }).catch(function (error) {
     })
 }
 
     self.unfollow = function (user) {
-        $http.delete('/follow/' + user).then(function (response) {
+        $http.delete('user/follow/' + user).then(function (response) {
             console.log(response);
         }).catch(function (error) {
         })
     }
-
-
 
 
 

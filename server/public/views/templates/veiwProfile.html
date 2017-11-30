@@ -13,7 +13,8 @@
         <p>
             <strong>Bio: </strong> {{sc.reUser.data.data[0].bio}}</p>
 
-        <md-button ng-click="sc.follow()" class="md-raised md-primary">Follow</md-button>
+        <md-button ng-click="sc.reUser.data.data[0].username = sc.followInfo.username ; sc.reUser.data.data[0].username = sc.followInfo.id ;sc.follow(sc.followInfo)"
+            class="md-raised md-primary">Follow</md-button>
         <md-button ng-click="sc.unfollow()" class="md-raised md-warn">UnFollow</md-button>
     </div>
 
@@ -21,16 +22,14 @@
     <div ng-show="showme">
 
 
-    <br></br>
+        <br></br>
 
-</div>
-<h6 layout=row layout-align="center center"> {{sc.reUser.data.data[0].username}}'s  Recent Reveiws</h6>
-<div id="revList">
-    <div ng-cloak layout=column layout-align="space-around center" ng-repeat="reviews in sc.thisUserReviews.data">
-        <md-button ng-click="sc.revId = reviews.id ; sc.viewReview() ; sc.seeReview()">
-            <a href="#/review">{{reviews.game}} | {{reviews.title}}</a>
-        </md-button>
     </div>
-</div>
-
-</div>
+    <h6 layout=row layout-align="center center"> {{sc.reUser.data.data[0].username}}'s Recent Reveiws</h6>
+    <div id="revList">
+        <div ng-cloak layout=column layout-align="space-around center" ng-repeat="reviews in sc.thisUserReviews.data">
+            <md-button ng-click="sc.revId = reviews.id ; sc.viewReview() ; sc.seeReview()">
+                <a href="#/review">{{reviews.game}} | {{reviews.title}}</a>
+            </md-button>
+        </div>
+    </div>
