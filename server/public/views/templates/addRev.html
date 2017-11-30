@@ -1,9 +1,8 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <br></br>
 <div layout="column" layout-align="center center">
-    <md-button class="md-raised md-primary" ng-click="rc.addRev(rc.review)">Add Your review</md-button>
+    <md-button class="md-raised md-primary" ng-click="rc.addRev(rc.review)"><a href="#info">Add Review</a></md-button>
     <br>
-
     <input id="gameInput" ng-model="rc.game.name" type="text" placeholder="search for game">
     <md-button class="md-raised md-primary" ng-click="rc.searchGames(rc.game)">Search Games</md-button>
     <br>
@@ -11,7 +10,9 @@
         <md-button ng-click="rc.review.game = result.name">{{result.name}}</md-button>
     </div>
     <br>
-    <input id="scoreInput" ng-model="rc.review.score" type="number" placeholder="score for the game">
+    <p>Score (optional)</p>
+    <jk-rating-stars max-rating="5" rating="rc.review.score" on-rating="rc.review.score">
+    </jk-rating-stars>
     <br>
     <input id="titleInput" ng-model="rc.review.title" type="text" placeholder="Title">
     <br>
@@ -20,5 +21,6 @@
 
     <br>
     <div id="txtAng" text-angular ng-model="rc.review.text"></div>
-
 </div>
+
+

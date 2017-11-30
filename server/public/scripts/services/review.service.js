@@ -6,6 +6,8 @@ myApp.service('RevService', function ($http, $location) {
     self.getComment = {}
     self.revToSee= {}
     self.commentInfo = {}
+    self.homeResults={}
+    self.reviewUserResult={}
     var revId = ""
 
     self.addRev = function (rev) {
@@ -25,6 +27,17 @@ myApp.service('RevService', function ($http, $location) {
         $http.get('/review/reviews/' + id).then(function (response) {
             console.log(response);
             self.reviewResult.data = response.data;
+        }).catch(function (error) {
+        })
+    }
+
+    self.getThisReviews = function () {
+        console.log('got user revs');
+        console.log(user);
+        
+        $http.get('/review/reviews/this/' + user).then(function (response) {
+            console.log(response);
+            self.reviewUserResult.data = response.data;
         }).catch(function (error) {
         })
     }
@@ -52,12 +65,13 @@ myApp.service('RevService', function ($http, $location) {
             console.log(self.thisReview);
             revId = self.thisReview.data.data[0].id
             console.log(revId);
-            
         }).catch(function (error) {
         })
     }
 
     self.postComment = function (com , revId) {
+        console.log('post com', com, revId);
+        
         $http.post('/review/comment/' + id , com).then(function (response) {
             self.getComments();
             console.log(response);
@@ -74,6 +88,21 @@ myApp.service('RevService', function ($http, $location) {
             self.getComment.data = response;
             console.log(self.getComment);
             
+        }).catch(function (error) {
+        })
+    }
+
+    self.getHomeReviews = function () {
+        $http.get('/review/home/reviews/').then(function (response) {
+            console.log(response);
+            self.homeResults.data = response.data;
+        }).catch(function (error) {
+        })
+    }
+
+    self.deleteRev = function (delId) {
+        $http.delete('/review/thisReview/' + delId).then(function (response) {
+            console.log(response);
         }).catch(function (error) {
         })
     }

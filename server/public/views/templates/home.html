@@ -1,21 +1,39 @@
 <div class="container" layout=column layout-align="center center">
 
-    
-                        <center >Review Monster</center>
-    <h1 class="lead">Login</h1>
+    <div class=navbar>
+        <center>Review Monster</center>
+    </div>
+    <br>
     <h1 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
-        <form ng-submit="lc.login()">
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" ng-model="lc.user.username" />
+        <div class="md-menu-demo" ng-controller="BasicDemoCtrl as ctrl" ng-cloak>
+            <div class="menu-demo-container" layout-align="center center" layout="column">
+                <md-menu >
+                    <md-button aria-label="Open phone interactions menu" class="md-raised md-primary" ng-click="ctrl.openMenu($mdMenu, $event)">
+                        Login
+                    </md-button>
+                    <md-menu-content width="5">
+                        <md-menu-item>
+                            <input type="text" ng-model="lc.user.username" placeholder="Username" />
+                        </md-menu-item>
+                        <md-menu-item>
+                            <input type="password" ng-model="lc.user.password" placeholder="Password" />
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button class="btn btn-default md-raised md-primary" ng-click="lc.login()" value="Log In">Log IN</md-button>
+                            <md-button class="md-raised md-primary">
+                                <a href="#register">Register</a>
+                            </md-button>
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
             </div>
-            <div>
-                <label for="password">Password :</label>
-                <input type="password" ng-model="lc.user.password" />
+        </div>
+        <h6 layout=row layout-align="center center">Most Recent Reveiws</h6>
+        <div id="revList">
+            <div ng-cloak layout=column layout-align="space-around center" ng-repeat="reviews in lc.homeReviews.data">
+                <md-button ng-click="lc.revId = reviews.id ; lc.viewReview() ; lc.seeReview()">
+                    <a href="#/review">{{reviews.game}} | {{reviews.title}}</a>
+                </md-button>
             </div>
-            <div>
-                <md-button class="btn btn-default md-raised md-primary" type="submit" name="submit" value="Log In" >Log IN</md-button>
-                <md-button class="md-raised md-primary"><a href="#register">Register</a></md-button>
-            </div>
-        </form>
-</div>
+        </div>

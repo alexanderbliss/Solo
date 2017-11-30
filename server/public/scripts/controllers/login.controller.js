@@ -1,6 +1,7 @@
-myApp.controller('LoginController', function($http, $location, UserService) {
+myApp.controller('LoginController', function($http, $location, UserService, RevService) {
     console.log('LoginController created');
     var vm = this;
+    vm.homeReviews = RevService.homeResults
     vm.user = {
       username: '',
       password: '',
@@ -35,6 +36,8 @@ myApp.controller('LoginController', function($http, $location, UserService) {
       }
     };
 
+    RevService.getHomeReviews();
+
     vm.registerUser = function() {
       console.log('LoginController -- registerUser');
       if(vm.user.username === '' || vm.user.password === '') {
@@ -55,5 +58,29 @@ myApp.controller('LoginController', function($http, $location, UserService) {
     $mdThemingProvider.theme('docs-dark', 'default')
       .primaryPalette('yellow')
       .dark();
+  }).controller('BasicDemoCtrl', function DemoCtrl($mdDialog) {
+    var originatorEv;
 
+    this.openMenu = function ($mdMenu, ev) {
+      originatorEv = ev;
+      $mdMenu.open(ev);
+    };
+
+    this.notificationsEnabled = true;
+    this.toggleNotifications = function () {
+      this.notificationsEnabled = !this.notificationsEnabled;
+    };
+
+    this.redial = function () {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .targetEvent(originatorEv)
+          .clickOutsideToClose(true)
+          .parent('body')
+          .title('Suddenly, a redial')
+          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
+          .ok('That was easy')
+      );
+      originatorEv = null;
+    };
   });

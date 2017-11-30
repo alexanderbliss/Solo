@@ -10,6 +10,8 @@
         <br></br>
         <h2>{{review.game}}</h2>
         <br></br>
+            <jk-rating-stars max-rating="5" rating=review.score read-only="rc.readOnly">
+            </jk-rating-stars>
         <div ng-bind-html="rc.trustHtml(review.text)"></div>
         <br></br>
         <ng-youtube-embed video="review.link" autoplay="false" color="white" disablekb="true" end="20" width="900px" height="500px">
@@ -18,17 +20,14 @@
 
 <br></br>
 <div layout=row layout-align="center center">
-    <md-button ng-click=EditReview class="md-raised md-warn">Edit This review</md-button>
-    <md-button ng-click=EditReview class="md-accent md-raised md-hue-3">Delete This Review</md-button>
+    <md-button ng-click="rc.delId = review.id ; rc.deleteRev(delId)" class="md-accent md-raised md-hue-3"><a href="#info">Delete This Review</a></md-button>
 </div>
 <br></br>
-<div layout=column layout-align="center center">
-    <input type="text" ng-model="rc.comment.comment">
-    <md-button class="md-raised md-primary" ng-click="rc.comment.revId = review.id ; rc.postComment(rc.comment)">Post Comment</md-button>
-</div>
-<div id="commentContainer" ng-repeat="comment in rc.getComment.data.data">
+
+<div id="commentContainer" layout="column" layout-align="center center">
+    <h1>Comments</h1>
+<div ng-repeat="comment in rc.getComment.data.data" >
     <p>{{comment.comment}}</p>
-    <md-button>Edit</md-button>
-    <md-button>Delete</md-button>
+</div>
 </div>
 </div>

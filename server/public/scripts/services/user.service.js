@@ -3,6 +3,7 @@ myApp.service('UserService', function ($http, $location) {
   var self = this;
   self.userObject = {};
   self.infoResult = { data: [] }
+
   
   self.getuser = function () {
     console.log('UserService -- getuser');
@@ -33,7 +34,7 @@ myApp.service('UserService', function ($http, $location) {
     $http.put('/user/' + userName, user)
       .then(function (response) {
         if (response) {
-          self.userInfo()
+          self.getuser()
         } else {
           console.log('UserService error');
         }
