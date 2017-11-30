@@ -1,5 +1,36 @@
 <div ng-include="'views/partials/nav.html'"></div>
+<div ng-cloak class="container">
+    <center>
+        <u>Profile</u>
+    </center>
+    <div ng-cloak layout="row" layout-align="space-around center" layout-wrap>
+        <p>
+            <strong>Username: </strong>{{sc.reUser.data.data[0].username}}</p>
+        <p>
+            <strong>email: </strong> {{sc.reUser.data.data[0].email}}</p>
+        <p>
+            <strong>Name: </strong> {{sc.reUser.data.data[0].real_name}}</p>
+        <p>
+            <strong>Bio: </strong> {{sc.reUser.data.data[0].bio}}</p>
 
-<div ng-repeat="user in userData.data">
+        <md-button ng-click="sc.follow()" class="md-raised md-primary">Follow</md-button>
+        <md-button ng-click="sc.unfollow()" class="md-raised md-warn">UnFollow</md-button>
+    </div>
+
+    <br/>
+    <div ng-show="showme">
+
+
+    <br></br>
+
+</div>
+<h6 layout=row layout-align="center center"> {{sc.reUser.data.data[0].username}}'s  Recent Reveiws</h6>
+<div id="revList">
+    <div ng-cloak layout=column layout-align="space-around center" ng-repeat="reviews in sc.thisUserReviews.data">
+        <md-button ng-click="sc.revId = reviews.id ; sc.viewReview() ; sc.seeReview()">
+            <a href="#/review">{{reviews.game}} | {{reviews.title}}</a>
+        </md-button>
+    </div>
+</div>
 
 </div>

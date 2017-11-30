@@ -100,4 +100,27 @@ router.get('/reviewers/:id', function (req, res) {
   });
 });//END GET ROUTE
 
+router.get('/this/:id', function (req, res) {
+  var searchId = req.params.id
+  console.log(searchId);
+  pool.connect(function (errorConnectingToDb, db, done) {
+    if (errorConnectingToDb) {
+      console.log('Error connecting', errorConnectingToDb);
+      res.sendStatus(500);
+    } else {
+      var queryText = 'SELECT "id", "username", "real_name", "email",  "bio" FROM "users" WHERE "id" = $1 ;';
+      db.query(queryText, [searchId], function (errorMakingQuery, result) {
+        done();
+        if (errorMakingQuery) {
+          console.log('Error making query', errorMakingQuery);
+          res.sendStatus(500);
+        } else {
+          console.log(result.rows);
+          res.send(result.rows);
+        }
+      }); // END QUERY
+    }
+  });
+});//END GET ROUTE
+
 module.exports = router;

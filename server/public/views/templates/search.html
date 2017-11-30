@@ -8,7 +8,9 @@
     <md-button ng-click="sc.searchReviewers(sc.reviewer)">Search</md-button>
 </div>
 <div ng-repeat="result in sc.searchResults.data">
-<md-button>{{result.username}}</md-button>
+        <md-button ng-click="sc.user.id = result.id ; sc.thisUser()">
+            <a href="#/viewProfile">{{result.username}}</a>
+        </md-button>
 </div>
 inside search page.
 
