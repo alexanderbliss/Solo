@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngYoutubeEmbed', 'ngMaterial', 'textAngular']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngYoutubeEmbed', 'ngMaterial', 'textAngular', 'jkAngularRatingStars']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider) {
@@ -65,7 +65,7 @@ myApp.config(function($routeProvider, $locationProvider) {
       }
     }).when('/viewProfile', {
       templateUrl: '/views/templates/veiwProfile.html',
-      controller: 'infoController as ic',
+      controller: 'SearchController as sc',
       resolve: {
         getuser: function (UserService) {
           return UserService.getuser();

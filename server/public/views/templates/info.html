@@ -1,38 +1,50 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div ng-cloak class="container">
-  <center><u>Profile</u></center>
-  <div ng-cloak layout="row"  layout-align="space-around center" layout-wrap>
-    <p><strong>Username: </strong>{{ic.userObject.userName}}</p>
-    <p><strong>email: </strong> {{ic.userObject.email}}</p>
-    <p><strong>Name: </strong> {{ic.userObject.real_name}}</p>
-    <p><strong>id :</strong> {{ic.userObject.id}}</p>
-    <md-button class="md-raised md-primary"><a href="#/addRev">Add a review</a></md-button>
-    <p><strong>Bio: </strong> {{ic.userObject.bio}}</p>
-
-
-  </div>
-  
-  Edit Info<input type="checkbox" ng-model="checked" aria-label="Toggle ngShow">
-  <br />
-  <div class="check-element animate-show-hide" ng-show="checked">
-  
-  
-  <br></br>
-  <div id="inputContainer">
-    <input ng-model="ic.changeInfo.username" type="text" placeholder="username">
-    <input ng-model="ic.changeInfo.email" type="text" placeholder="email">
-    <input ng-model="ic.changeInfo.bio" type="text" placeholder="bio">
-    <input ng-model="ic.changeInfo.realName" type="text" placeholder="Real Name">
-    <button ng-click="ic.editInfo(ic.user)">submit</button>
-  </div>
-  </div>
-  <h6 layout=row layout-align="center center">Recent Reveiws</h6>
-  <div id="revList">
-  <div  ng-cloak layout=column layout-align="space-around center"  ng-repeat="reviews in ic.reviews.data">
-    <md-button ng-click="ic.revId = reviews.id ; ic.viewReview() ; ic.seeReview()">
-      <a href="#/review">{{reviews.game}} | {{reviews.title}}</a>
+  <center>
+    <u>Profile</u>
+  </center>
+  <div ng-cloak layout="row" layout-align="space-around center" layout-wrap>
+    <p>
+      <strong>Username: </strong>{{ic.userObject.userName}}</p>
+    <p>
+      <strong>email: </strong> {{ic.userObject.email}}</p>
+    <p>
+      <strong>Name: </strong> {{ic.userObject.real_name}}</p>
+    <p>
+      <strong>id :</strong> {{ic.userObject.id}}</p>
+    <md-button class="md-raised md-primary">
+      <a href="#/addRev">Add a review</a>
     </md-button>
+    <md-button class="md-raised md-warn" ng-click="showme=true">Edit Info</md-button>
+
+    <p>
+      <strong>Bio: </strong> {{ic.userObject.bio}}</p>
+
+
+  </div>
+
+  <br />
+  <div ng-show="showme">
+
+
+    <br></br>
+    <div id="inputContainer" layout=column layout-align="center center">
+      <input id="editInput" ng-model="ic.changeInfo.username" type="text" placeholder="username">
+      <input id="editInput" ng-model="ic.changeInfo.email" type="text" placeholder="email">
+      <input id="editInput" ng-model="ic.changeInfo.bio" type="text" placeholder="bio">
+      <input id="editInput" ng-model="ic.changeInfo.realName" type="text" placeholder="Real Name">
+      <div layout=row>
+      <md-button ng-click="ic.editInfo(ic.user)">submit</md-button>
+      <md-button ng-click="showme=false">cancel</md-button>
+    </div>
     </div>
   </div>
-
+  <h6 layout=row layout-align="center center">Your Recent Reveiws</h6>
+  <div id="revList">
+    <div ng-cloak layout=column layout-align="space-around center" ng-repeat="reviews in ic.reviews.data">
+      <md-button ng-click="ic.revId = reviews.id ; ic.viewReview() ; ic.seeReview()">
+        <a href="#/review">{{reviews.game}} | {{reviews.title}}</a>
+      </md-button>
+    </div>
+  </div>
 </div>
