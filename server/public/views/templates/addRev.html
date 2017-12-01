@@ -20,7 +20,13 @@
     <input id="linkInput" ng-model="rc.review.link" type="text" placeholder="link">
 
     <br>
-    <div id="txtAng" text-angular ng-model="rc.review.text"></div>
+    <div id="txtAng" text-angular ng-model="rc.review.text" ></div>
+
+<br>
+    <md-button class="md-raised md-primary" ng-click="rc.addRev(rc.review)">
+        <a href="#info">Add Review</a>
+    </md-button>
+
 </div>
 
 
