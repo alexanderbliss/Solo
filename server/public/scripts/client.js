@@ -71,6 +71,13 @@ myApp.config(function($routeProvider, $locationProvider) {
           return UserService.getuser();
         }
       }
+    }).when('/about', {
+      templateUrl: '/views/templates/about.html',
+      resolve: {
+        getuser: function (UserService) {
+          return UserService.getuser();
+        }
+      }
     })
     .otherwise({
       redirectTo: 'home'

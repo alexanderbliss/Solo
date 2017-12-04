@@ -13,11 +13,11 @@
         <p>
             <strong>Bio: </strong> {{sc.reUser.data.data[0].bio}}</p>
 
-        <md-button ng-click="sc.reUser.data.data[0].username = sc.followInfo.username ; sc.reUser.data.data[0].username = sc.followInfo.id ;sc.follow(sc.followInfo)"
-            class="md-raised md-primary">Follow</md-button>
-        <md-button ng-click="sc.unfollow()" class="md-raised md-warn">UnFollow</md-button>
+        <md-button ng-show="follow" ng-click="follow=false ; unfollow=false"
+            class="md-raised md-warn">UnFollow</md-button>
+        <md-button ng-hide="unfollow" ng-click="unfollow=true ; follow=true" 
+        class="md-raised md-primary">Follow</md-button>
     </div>
-
     <br/>
     <div ng-show="showme">
 
