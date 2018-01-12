@@ -94,8 +94,6 @@ https://twitter.com/AlexBliss93/status/932343267550777344
 
 ### Completed Features
 
-High level list of items completed.
-
 - [x] Created ability to Add reviews
 - [x] Added GiantBomb API to search for games
 - [x] Added Text Angular for better formating for reviews
@@ -117,7 +115,6 @@ High level list of items completed.
 - [ ] Flesh out comment section more
 - [ ] Create user experience for only veiwing reviews
 - [ ] Add administration role to better curate content
-notes about how to deploy this on a live system
 
 ## Authors
 
