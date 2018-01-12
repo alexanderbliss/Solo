@@ -3,6 +3,14 @@
 This app’s main objective is to provide game reviewers with a constructive space in order to improve their skills as reviewers. The app also strives to create a more personal connection between reviewers and their audiences. 
 The app allows the user to create a profile, log in, add reviews and view others’ reviews, leave constructive comments on the composition of the review, and also gives the user the ability to follow other reviewers to better connect with them. 
 
+Veiw app. note that apps on heroku can take 10-15 seconds to load.
+
+https://thawing-journey-23505.herokuapp.com/#/home
+
+test credentials 
+
+username : abliss01
+password: test
 
 
 ## Technologies Used
