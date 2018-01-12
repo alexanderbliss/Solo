@@ -7,7 +7,7 @@ Veiw app. note that apps on heroku can take 10-15 seconds to load.
 
 https://thawing-journey-23505.herokuapp.com/#/home
 
-test credentials 
+Testing Credentials
 
 username : abliss01
 
