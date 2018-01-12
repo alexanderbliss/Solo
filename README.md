@@ -7,7 +7,16 @@ The app allows the user to create a profile, log in, add reviews and view others
 
 ## Technologies Used
 
-Angular, SQL, JavaScript, HTML, CSS, Node.js, Angular Material, Giant-Bomb API, Passport, Node Plug Ins: jk-stars-angular, ng-YouTube-embed, TextAngular, FontAwesome.
+Angular,
+SQL, 
+JavaScript,
+HTML,
+CSS,
+Node.js, 
+Angular Material,
+Giant-Bomb API,
+Passport,
+Node Plug Ins: jk-stars-angular, ng-YouTube-embed, TextAngular, FontAwesome.
 
 ## Set up
 
@@ -82,6 +91,7 @@ High level list of items completed.
 - [x] Added GiantBomb API to search for games
 - [x] Added Text Angular for better formating for reviews
 - [x] Added jk-angular-stars to reviews
+- [x] Allowed reviewers to include youtube videos
 - [x] Delete reviews
 - [x] Added Ability to comment on reviews
 - [x] Changed register page to form that requires more information
