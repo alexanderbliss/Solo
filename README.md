@@ -1,9 +1,9 @@
 # Review Monster
 
 This app’s main objective is to provide game reviewers with a constructive space in order to improve their skills as reviewers. The app also strives to create a more personal connection between reviewers and their audiences. 
-The app allows the user to create a profile, log in, add reviews and view others’ reviews, leave constructive comments on the composition of the review, and also gives the user the ability to follow other reviewers to better connect with them. 
+The app allows the user to create a profile, log in, add and read others’ reviews, leave constructive comments on the composition of the review, and also gives the user the ability to 'follow' other reviewers to better connect with them. 
 
-Veiw app. note that apps on heroku can take 10-15 seconds to load.
+Click link below to view app. Note that apps on heroku can take 10-15 seconds to load.
 
 https://thawing-journey-23505.herokuapp.com/#/home
 
@@ -34,9 +34,9 @@ Node Plug Ins: jk-stars-angular, ng-YouTube-embed, TextAngular, FontAwesome.
 3. Run npm start
 4. Visit http://localhost:5000 in your browser
 
-The app should now be live. afer registering you should be able to review games and see others reviews.
+The app should now be live. After registering you should be able to review games and see others' reviews.
 
-Optional: To set up database see Installation Below.
+Optional: to set up database see Installing below.
 
 ### Prerequisites
 
@@ -46,7 +46,6 @@ Optional: To set up database see Installation Below.
 
 ### Installing
 
-Steps to get the development environment running.
 
 ```sql
 CREATE TABLE "reviews" (
@@ -88,7 +87,7 @@ CREATE TABLE "following" (
 https://docs.google.com/document/d/1uVCvlGZ0_gXcgOk0NKlXkAkkaXClQqsu5jkaMbGWoSQ/edit?usp=sharing
 
 
-Click the link below to see first steps in planning proccess.
+Click the link below to see first steps in the planning proccess.
 
 https://twitter.com/AlexBliss93/status/932343267550777344
 
