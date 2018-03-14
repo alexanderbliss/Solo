@@ -4,10 +4,12 @@ html {
   padding: 0;
   font-family: sans-serif;
   font-size: 14px;
-  background-color: #CDEDF6;
   color: #042A2B;
   font-family: 'Source Serif Pro', serif;
+  background-image: url("/Pictures/Spiderman.jpg");
+  background-size: cover;
 }
+
 
 p {
   font-size: 20px;
@@ -30,12 +32,21 @@ h6 {
   padding-right: 50px;
 }
 
+
+#aboutPage{
+  color: #DDDDDD;
+    background-color: black;
+
+}
 .instructions {
   background-color: #333333;
   color: #DDDDDD;
   padding: 15px;
 }
 
+#scoreTag {
+  color: white;
+}
 #entryForm {
   margin-top: 14px;
 }

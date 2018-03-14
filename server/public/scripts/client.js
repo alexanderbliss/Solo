@@ -83,3 +83,22 @@ myApp.config(function($routeProvider, $locationProvider) {
       redirectTo: 'home'
     });
 });
+// window.onload = function () {
+//   changeBackground();
+
+// };
+
+//   var images = ['./Pictures/Halo.png',
+//     '../Pictures/Chrono.png',
+//     './Pictures/LOU.jpg',
+//     './Pictures/Spiderman.jpg',
+//     './Pictures/Zelda.jpg',];
+
+//   var randomNumber = Math.floor(Math.random() * images.length);
+//   var bgImg = images[randomNumber];
+
+//   function changeBackground(){
+    
+//   body.css({ 'background': bgImg, 'background-size': 'cover', });
+//   }
+

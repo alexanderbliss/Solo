@@ -1,6 +1,6 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <br></br>
-<div layout="column" layout-align="center center">
+<div layout="column" layout-align="center center" class="background">
     <md-button class="md-raised md-primary" ng-click="rc.addRev(rc.review)"><a href="#info">Add Review</a></md-button>
     <br>
     <input id="gameInput" ng-model="rc.game.name" type="text" placeholder="search for game">
@@ -10,7 +10,7 @@
         <md-button ng-click="rc.review.game = result.name">{{result.name}}</md-button>
     </div>
     <br>
-    <p>Score (optional)</p>
+    <p id="scoreTag">Score (optional)</p>
     <jk-rating-stars max-rating="5" rating="rc.review.score" on-rating="rc.review.score">
     </jk-rating-stars>
     <br>
